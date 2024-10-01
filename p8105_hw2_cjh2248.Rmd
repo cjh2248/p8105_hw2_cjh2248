@@ -21,7 +21,29 @@ select(transit_df, line, station_name, station_latitude, station_longitude, star
                             "YES" ~ TRUE, 
                             "NO" ~ FALSE, 
                             .default = NA))
+
+select(transit_df, -division, -exit_only, -staffing, -staff_hours, -ada_notes, -free_crossover, -north_south_street, -east_west_street, -corner, -entrance_latitude, -entrance_longitude, -station_location,-entrance_location)
 ```
+```{r}
+distinct_stations <- transit_df %>%
+  distinct(station_name, line) %>%
+  nrow()
+```
+
+```{r}
+print(distinct_stations)
+```
+```{r}
+ada_stations_count <- transit_df %>%
+  filter(ada == TRUE) %>%
+  nrow()
+
+```
+```{r}
+print(ada_stations_count)
+```
+
+
 
 
 
