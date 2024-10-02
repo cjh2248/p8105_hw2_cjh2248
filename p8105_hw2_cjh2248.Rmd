@@ -7,8 +7,10 @@ date: "2024-09-28"
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(dplyr)
+library(readxl)
 ```
 
+## Problem 1
 ```{r}
 transit_df = 
   read_csv("data/nyc_transit.csv", na = c("NA","","."))
@@ -46,6 +48,21 @@ ada_stations_count <- transit_df %>%
 print(ada_stations_count)
 ```
 
+```{r}
+no_vending = select(transit_df, station_name, entrance_type, vending, entry) %>% distinct(station_name, .keep_all=TRUE)  %>%  
+  filter(vending=="NO", entry=="YES")
+
+print(no_vending)
+```
+
+```{r}
+no_vending_total = select(transit_df, station_name, entrance_type, vending, entry) %>% distinct(station_name, .keep_all=TRUE)  %>%  
+  filter(vending=="NO")
+
+print(no_vending_total)
+```
+
+## Problem 2 
 
 
 
