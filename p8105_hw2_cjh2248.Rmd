@@ -24,6 +24,9 @@ select(transit_df, line, station_name, station_latitude, station_longitude, star
 
 select(transit_df, -division, -exit_only, -staffing, -staff_hours, -ada_notes, -free_crossover, -north_south_street, -east_west_street, -corner, -entrance_latitude, -entrance_longitude, -station_location,-entrance_location)
 ```
+
+In this dataset, I selected all the columns that we needed using the select function and removed the remaining ones. After I cleaned up the data, I converted the entry from a a character variable toa logical variable using mutate and case_match. This new dataset gives us a clearer picture on some of the most important factors and variables. After doing this,  a new table was generated to depict 1,868 x 19. This data table is not as tidy as expected, however, it helps give us information that is necessary. 
+
 ```{r}
 distinct_stations <- transit_df %>%
   distinct(station_name, line) %>%
@@ -42,8 +45,6 @@ ada_stations_count <- transit_df %>%
 ```{r}
 print(ada_stations_count)
 ```
-
-
 
 
 
