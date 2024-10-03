@@ -62,7 +62,28 @@ no_vending_total = select(transit_df, station_name, entrance_type, vending, entr
 print(no_vending_total)
 ```
 
-## Problem 2 
+From our findings, we can conclude that the proportion of station entrances / exits without vending allow entrance is 5/9. 
+
+```{r}
+transit_df = read_csv("data/nyc_transit.csv",
+                  col_types = cols(
+                    Route8=col_character(),
+                    Route9=col_character(),
+                    Route10=col_character(),
+                    Route11=col_character()))
+
+transit_pivot = pivot_longer(
+  transit_df, 
+  cols = starts_with("route"),
+  names_to = "route_number", 
+  values_to = "route_name", 
+  names_prefix = "route"
+)
+
+print(transit_pivot)
+```
+
+
 
 
 
